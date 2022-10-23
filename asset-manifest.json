@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/static/css/main.79ee74fc.css",
-    "main.js": "/static/js/main.56aed92f.js",
-    "static/js/287.995a450d.chunk.js": "/static/js/287.995a450d.chunk.js",
+    "main.js": "/static/js/main.4aff7bb0.js",
+    "static/js/451.fdc626c2.chunk.js": "/static/js/451.fdc626c2.chunk.js",
     "static/js/787.df804e12.chunk.js": "/static/js/787.df804e12.chunk.js",
-    "static/js/16.57fd4f51.chunk.js": "/static/js/16.57fd4f51.chunk.js",
+    "static/js/735.2905a6ff.chunk.js": "/static/js/735.2905a6ff.chunk.js",
     "static/media/busybox": "/static/media/busybox.c53a530aaead944cc118",
     "static/media/alien-white.svg": "/static/media/alien-white.3d4748020987ec06b1dbe22edf14042e.svg",
     "index.html": "/index.html",
     "static/media/oc.svg": "/static/media/oc.8cb12c18c6a2e6113c8f2bc4bf9d9e76.svg",
     "static/media/ethereum.svg": "/static/media/ethereum.2a40d4c3c960a93a4552f27968b0f696.svg",
     "main.79ee74fc.css.map": "/static/css/main.79ee74fc.css.map",
-    "main.56aed92f.js.map": "/static/js/main.56aed92f.js.map",
-    "287.995a450d.chunk.js.map": "/static/js/287.995a450d.chunk.js.map",
+    "main.4aff7bb0.js.map": "/static/js/main.4aff7bb0.js.map",
+    "451.fdc626c2.chunk.js.map": "/static/js/451.fdc626c2.chunk.js.map",
     "787.df804e12.chunk.js.map": "/static/js/787.df804e12.chunk.js.map",
-    "16.57fd4f51.chunk.js.map": "/static/js/16.57fd4f51.chunk.js.map"
+    "735.2905a6ff.chunk.js.map": "/static/js/735.2905a6ff.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.79ee74fc.css",
-    "static/js/main.56aed92f.js"
+    "static/js/main.4aff7bb0.js"
   ]
 }
