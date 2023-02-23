@@ -34,6 +34,7 @@ import {
   UrlBox,
   UrnBox,
   VmhdBox,
+  CttsBox,
 } from "./types";
 
 export async function parseBox(stream: FileStreamReader): Promise<Box> {
@@ -88,6 +89,7 @@ export async function parseBox(stream: FileStreamReader): Promise<Box> {
     trak: TrakBoxParser,
     udta: UdtaBoxParser,
     vmhd: VmhdBoxParser,
+    ctts: CttsBoxParser,
   };
 
   let parser: BoxParser<Box>;
@@ -457,6 +459,7 @@ class StblBoxParser extends SimpleBoxParser<StblBox> {
       stss: childBoxes.stss![0] as StssBox,
       stsz: childBoxes.stsz![0] as StszBox,
       stts: childBoxes.stts![0] as SttsBox,
+      ctts: childBoxes.ctts![0] as CttsBox
     };
   }
 }
@@ -554,7 +557,7 @@ class AvcCBoxParser extends SimpleBoxParser<AvcCBox> {
       const ppsData = await this.stream.getNextBytes(ppsLength);
       pps.push(ppsData);
     }
-
+    
     return {
       header,
       type: "avcC",
@@ -742,8 +745,8 @@ class HdrlBoxParser extends FullBoxParser<HdlrBox> {
 
 class VmhdBoxParser extends FullBoxParser<VmhdBox> {
   async parseBox(
-    header: BoxHeader,
-    fullBoxHeader: FullBoxHeader
+      header: BoxHeader,
+      fullBoxHeader: FullBoxHeader
   ): Promise<VmhdBox> {
     const graphicsMode = await this.stream.getNextUint16();
     const opColor = [
@@ -758,6 +761,30 @@ class VmhdBoxParser extends FullBoxParser<VmhdBox> {
       type: "vmhd",
       graphicsMode,
       opColor,
+    };
+  }
+}
+
+class CttsBoxParser extends FullBoxParser<CttsBox> {
+  async parseBox(
+      header: BoxHeader,
+      fullBoxHeader: FullBoxHeader
+  ): Promise<CttsBox> {
+    const sampleCount = await this.stream.getNextUint32();
+    let sampleCounts = [];
+    let sampleOffsets = [];
+
+    for (let i = 0; i < sampleCount; i++) {
+      sampleCounts.push(await this.stream.getNextUint32());
+      sampleOffsets.push(await this.stream.getNextUint32());
+    }
+
+    return {
+      header,
+      fullBoxHeader,
+      type: "ctts",
+      sampleCounts,
+      sampleOffsets,
     };
   }
 }
